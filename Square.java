@@ -28,10 +28,10 @@ public class Square {
     public boolean getCanBlue(){
         return canBlue;
     }
-    public void setCanBlue(){
+    public void setCanWhite(){
         canWhite = true;
     }
-    public void setCanWhite(){
+    public void setCanBlue(){
         canBlue = true;
     }
     public void resetCan(){

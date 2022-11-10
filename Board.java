@@ -19,25 +19,25 @@ public class Board {
 
         // Set up white squares
         for (int[] white : inWhites) {
-            board[white[0]][white[1]].setState(Square.State.WHITE);
+            board[white[1]][white[0]].setState(Square.State.WHITE);
         }
         // Set up blue squares
         for (int[] blue : inBlues) {
-            board[white[0]][white[1]].setState(Square.State.BLUE);
+            board[blue[1]][blue[0]].setState(Square.State.BLUE);
         }
 
 
         // Set up array lengths
-        rows = new Line[inRows.length];
-        columns = new Line[inColumns.length];
+        rows = new Line[size];
+        columns = new Line[size];
 
         // Rows
-        for (int i = 0; i < inRows.length; i++) {
+        for (int i = 0; i < size; i++) {
             rows[i] = new Line(board[i]);
         }
 
         // Columns
-        for (int i = 0; i < inColumns.length; i++) {
+        for (int i = 0; i < size; i++) {
             Square[] colSquare = new Square[size];
             for (int j = 0; j < colSquare.length; j++) {
                 colSquare[j] = board[j][i];
@@ -76,6 +76,7 @@ public class Board {
                 }
             }
             changed |= smallChange;
+            // break;
         }
     }
 
@@ -86,13 +87,13 @@ public class Board {
             for (Square square : row) {
                 switch(square.getState()){
                     case EMPTY:
-                        outString += " ";
+                        outString += "O ";
                     break;
-                    case FILLED:
-                        outString += "1 ";
+                    case WHITE:
+                        outString += "W ";
                     break;
-                    case X:
-                        outString += "X ";
+                    case BLUE:
+                        outString += "B ";
                     break;
                     default:
                         // How did we get here?
