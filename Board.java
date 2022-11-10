@@ -17,31 +17,32 @@ public class Board {
             }
         }
 
+        // Set up white squares
+        for (int[] white : inWhites) {
+            board[white[0]][white[1]].setState(Square.State.WHITE);
+        }
+        // Set up blue squares
+        for (int[] blue : inBlues) {
+            board[white[0]][white[1]].setState(Square.State.BLUE);
+        }
+
+
         // Set up array lengths
         rows = new Line[inRows.length];
         columns = new Line[inColumns.length];
 
         // Rows
         for (int i = 0; i < inRows.length; i++) {
-            Group[] rowGroups = new Group[inRows[i].length];
-            for(int j = 0; j < rowGroups.length; j++){
-                rowGroups[j] =  new Group(inRows[i][j]);
-            }
-            rows[i] = new Line(rowGroups, board[i]);
+            rows[i] = new Line(board[i]);
         }
 
         // Columns
         for (int i = 0; i < inColumns.length; i++) {
-            Group[] colGroups = new Group[inColumns[i].length];
-            for(int j = 0; j < colGroups.length; j++){
-                colGroups[j] =  new Group(inColumns[i][j]);
-            }
-
             Square[] colSquare = new Square[size];
             for (int j = 0; j < colSquare.length; j++) {
                 colSquare[j] = board[j][i];
             }
-            columns[i] = new Line(colGroups, colSquare);
+            columns[i] = new Line(colSquare);
         }
     }
 
